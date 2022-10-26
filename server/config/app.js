@@ -10,17 +10,24 @@ let mongoose = require('mongoose');
 // URI
 let DB = require('./db');
 
-mongoose.connect(process.env.URI || DB.URI, {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(process.env.URI || DB.URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 let mongoDB = mongoose.connection;
 mongoDB.on('error', console.error.bind(console, 'Connection Error:'));
-mongoDB.once('open', ()=> {
+mongoDB.once('open', () => {
   console.log("Successfully connected to MongoDB...");
 });
 
 
 // define routers
 let index = require('../routes/index'); // top level routes
+/*
+File name: app
+Author's name: Viet Nguyen Hoang
+StudentID: 301228010
+Wep App name: Favourite Book List
+*/
+
 let books = require('../routes/books'); // routes for books
 
 let app = express();
@@ -43,12 +50,12 @@ app.use('/books', books);
 
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};

@@ -1,3 +1,9 @@
+/*
+File name: index
+Author's name: Viet Nguyen Hoang
+StudentID: 301228010
+Wep App name: Favourite Book List
+*/
 // modules required for routing
 let express = require('express');
 let router = express.Router();
@@ -11,7 +17,7 @@ router.get('/', (req, res, next) => {
   res.render('content/index', {
     title: 'Home',
     books: ''
-   });
+  });
 });
 
 module.exports = router;
